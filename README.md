@@ -1,7 +1,13 @@
 ## Android Dialer
 Android Dialer for Android N
+
 Customised to use as a kiosk, only phone calls are allowed once set.
+
 Useful for people who wants to use smartphone as a feature phone. example, my parents :)
+
+Set as device owener with below command
+
+adb shell dpm set-device-owner org.android.dialer/com.android.dialer.DeviceAdminReceiver
 
 ##LIB:
 * com.android.support:appcompat
