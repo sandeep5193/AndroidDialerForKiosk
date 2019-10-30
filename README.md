@@ -1,5 +1,5 @@
 ## Android Dialer
-Android Dialer for Android N
+Android Dialer for Android N (derived from https://github.com/geniusgithub/AndroidDialer)
 
 Customised to use as a kiosk, only phone calls are allowed once set.
 
