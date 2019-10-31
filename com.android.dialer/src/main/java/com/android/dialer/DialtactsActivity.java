@@ -47,6 +47,7 @@ import android.telecom.PhoneAccount;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.DragEvent;
 import android.view.Gravity;
@@ -108,6 +109,7 @@ import com.google.common.annotations.VisibleForTesting;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * The dialer tab's title is 'phone', a more common name (see strings.xml).
@@ -390,6 +392,14 @@ public class DialtactsActivity extends TransactionSafeActivity implements View.O
     protected void onCreate(Bundle savedInstanceState) {
         Trace.beginSection(TAG + " onCreate");
         super.onCreate(savedInstanceState);
+
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        android.content.res.Configuration conf = res.getConfiguration();
+        conf.setLocale(new Locale("gu"));
+        res.updateConfiguration(conf, dm);
+
+        Locale.setDefault(new Locale("gu"));
 
         // add by geniusgithub
         boolean hasStartPermissionActivity = ForceRequestPermissionsActivity.startPermissionActivity(this);

@@ -426,7 +426,7 @@ public final class CallLogListItemViewHolder extends RecyclerView.ViewHolder
             addToExistingContactButtonView.setOnClickListener(this);
 
             sendMessageView = actionsView.findViewById(R.id.send_message_action);
-            sendMessageView.setOnClickListener(this);
+            sendMessageView.setVisibility(View.GONE);
 
             detailsButtonView = actionsView.findViewById(R.id.details_action);
             detailsButtonView.setOnClickListener(this);
@@ -552,12 +552,13 @@ public final class CallLogListItemViewHolder extends RecyclerView.ViewHolder
             addToExistingContactButtonView.setVisibility(View.GONE);
         }
 
-        if (canPlaceCallToNumber) {
+        sendMessageView.setVisibility(View.GONE);
+        /*if (canPlaceCallToNumber) {
             sendMessageView.setTag(IntentProvider.getSendSmsIntentProvider(number));
             sendMessageView.setVisibility(View.VISIBLE);
         } else {
             sendMessageView.setVisibility(View.GONE);
-        }
+        }*/
 
         mCallLogListItemHelper.setActionContentDescriptions(this);
 

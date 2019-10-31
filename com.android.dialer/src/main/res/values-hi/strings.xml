@@ -271,4 +271,6 @@
     <string name="toast_cannot_write_system_settings" msgid="5614246168296606709">"फ़ोन ऐप को सिस्टम सेटिंग में लिखने की अनुमति नहीं है."</string>
     <string name="blocked_number_call_log_label" msgid="8912042441473014712">"अवरोधित"</string>
     <string name="accessibility_call_is_active" msgid="2297282583928508760">"<xliff:g id="NAMEORNUMBER">^1</xliff:g> सक्रिय है"</string>
+    <string name="menu_unpin">अनपिन</string>
+    <string name="dialog_unpin_message">अनपिन करने के लिए पासवर्ड दर्ज करें</string>
 </resources>

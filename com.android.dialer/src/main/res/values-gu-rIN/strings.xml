@@ -271,4 +271,6 @@
     <string name="toast_cannot_write_system_settings" msgid="5614246168296606709">"ફોન એપ્લિકેશનને સિસ્ટમ સેટિંગ્સ પર લખવાની પરવાનગી નથી."</string>
     <string name="blocked_number_call_log_label" msgid="8912042441473014712">"અવરોધિત"</string>
     <string name="accessibility_call_is_active" msgid="2297282583928508760">"<xliff:g id="NAMEORNUMBER">^1</xliff:g> સક્રિય છે"</string>
+    <string name="menu_unpin">અનલોક</string>
+    <string name="dialog_unpin_message">અનલોક કરવા માટે પાસવર્ડ નાખો</string>
 </resources>

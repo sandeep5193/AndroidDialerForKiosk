@@ -39,6 +39,7 @@ import com.android.contacts.common.list.ContactEntryListAdapter;
 import com.android.contacts.common.list.ContactEntryListFragment;
 import com.android.contacts.common.list.ContactListFilter;
 import com.android.contacts.common.list.DefaultContactListAdapter;
+import com.android.contacts.common.list.OnPhoneNumberPickerActionListener;
 import com.android.contacts.common.util.PermissionsUtil;
 import com.android.contacts.common.util.ViewUtil;
 import com.android.dialer.R;
@@ -46,6 +47,7 @@ import com.android.dialer.util.DialerUtils;
 import com.android.dialer.util.IntentUtil;
 import com.android.dialer.widget.EmptyContentView;
 import com.android.dialer.widget.EmptyContentView.OnEmptyViewActionButtonClickedListener;
+import com.android.incallui.Call;
 
 /**
  * Fragments to show all contacts with phone numbers.
@@ -57,6 +59,8 @@ public class AllContactsFragment extends ContactEntryListFragment<ContactEntryLi
     private static final int READ_CONTACTS_PERMISSION_REQUEST_CODE = 1;
 
     private EmptyContentView mEmptyListView;
+
+    private OnPhoneNumberPickerActionListener mPhoneNumberPickerActionListener;
 
     /**
      * Listen to broadcast events about permissions in order to be notified if the READ_CONTACTS
@@ -97,6 +101,12 @@ public class AllContactsFragment extends ContactEntryListFragment<ContactEntryLi
         super.onStart();
         PermissionsUtil.registerPermissionReceiver(getActivity(),
                 mReadContactsPermissionGrantedReceiver, READ_CONTACTS);
+        try {
+            mPhoneNumberPickerActionListener = (OnPhoneNumberPickerActionListener) getActivity();
+        } catch (ClassCastException e) {
+            throw new ClassCastException(getActivity().toString()
+                    + " must implement PhoneFavoritesFragment.listener");
+        }
     }
 
     @Override
@@ -153,6 +163,13 @@ public class AllContactsFragment extends ContactEntryListFragment<ContactEntryLi
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         final Uri uri = (Uri) view.getTag();
         if (uri != null) {
+
+            if (mPhoneNumberPickerActionListener != null) {
+                mPhoneNumberPickerActionListener.onPickDataUri(uri,
+                        false /* isVideoCall */, Call.LogState.INITIATION_SPEED_DIAL);
+            }
+            if(true)
+                return;
             if (CompatUtils.hasPrioritizedMimeType()) {
                 QuickContact.showQuickContact(getContext(), view, uri, null,
                         Phone.CONTENT_ITEM_TYPE);

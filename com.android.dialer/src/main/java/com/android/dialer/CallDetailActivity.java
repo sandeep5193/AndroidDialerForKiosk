@@ -169,7 +169,7 @@ public class CallDetailActivity extends AppCompatActivity
             mCallButton.setVisibility(canPlaceCallsTo ? View.VISIBLE : View.GONE);
             mCopyNumberActionItem.setVisibility(canPlaceCallsTo ? View.VISIBLE : View.GONE);
 
-            updateBlockActionItemVisibility(canPlaceCallsTo ? View.VISIBLE : View.GONE);
+            updateBlockActionItemVisibility(View.GONE);
 
             final boolean isSipNumber = PhoneNumberUtil.isSipNumber(mNumber);
             final boolean isVoicemailNumber =
@@ -292,7 +292,7 @@ public class CallDetailActivity extends AppCompatActivity
 
 
         mBlockNumberActionItem = (TextView) findViewById(R.id.call_detail_action_block);
-        updateBlockActionItemVisibility(View.VISIBLE);
+        updateBlockActionItemVisibility(View.GONE);
         mBlockNumberActionItem.setOnClickListener(this);
         mEditBeforeCallActionItem = findViewById(R.id.call_detail_action_edit_before_call);
         mEditBeforeCallActionItem.setOnClickListener(this);
