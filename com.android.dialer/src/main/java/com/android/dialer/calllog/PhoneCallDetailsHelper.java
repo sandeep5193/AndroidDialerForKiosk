@@ -175,7 +175,7 @@ public class PhoneCallDetailsHelper {
     private CharSequence getCallLocationAndDate(PhoneCallDetails details) {
         mDescriptionItems.clear();
 
-        if (details.callTypes[0] != Calls.VOICEMAIL_TYPE) {
+        /*if (details.callTypes[0] != Calls.VOICEMAIL_TYPE) {
             // Get type of call (ie mobile, home, etc) if known, or the caller's location.
             CharSequence callTypeOrLocation = getCallTypeOrLocation(details);
 
@@ -184,7 +184,7 @@ public class PhoneCallDetailsHelper {
             if (!TextUtils.isEmpty(callTypeOrLocation)) {
                 mDescriptionItems.add(callTypeOrLocation);
             }
-        }
+        }*/
 
         // The date of this call
         mDescriptionItems.add(getCallDate(details));

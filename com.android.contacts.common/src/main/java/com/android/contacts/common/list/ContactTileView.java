@@ -108,14 +108,15 @@ public abstract class ContactTileView extends FrameLayout {
                 }
             }
 
-            if (mPhoneLabel != null) {
+            /*if (mPhoneLabel != null) {
                 if (TextUtils.isEmpty(entry.phoneLabel)) {
                     mPhoneLabel.setVisibility(View.GONE);
                 } else {
                     mPhoneLabel.setVisibility(View.VISIBLE);
                     mPhoneLabel.setText(entry.phoneLabel);
                 }
-            }
+            }*/
+            mPhoneLabel.setVisibility(View.GONE);
 
             if (mPhoneNumber != null) {
                 // TODO: Format number correctly

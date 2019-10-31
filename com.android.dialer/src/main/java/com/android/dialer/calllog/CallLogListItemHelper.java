@@ -78,7 +78,7 @@ import com.android.dialer.calllog.calllogcache.CallLogCache;
 
         // The call type or Location associated with the call. Use when setting text for a
         // voicemail log's call button
-        views.callTypeOrLocation = mPhoneCallDetailsHelper.getCallTypeOrLocation(details);
+        views.callTypeOrLocation = "";//mPhoneCallDetailsHelper.getCallTypeOrLocation(details);
 
         // Cache country iso. Used for number filtering.
         views.countryIso = details.countryIso;
@@ -170,7 +170,7 @@ import com.android.dialer.calllog.calllogcache.CallLogCache;
         final CharSequence nameOrNumber = getNameOrNumber(details);
 
         // Get the call type or location of the caller; null if not applicable
-        final CharSequence typeOrLocation = mPhoneCallDetailsHelper.getCallTypeOrLocation(details);
+        final CharSequence typeOrLocation = "";//mPhoneCallDetailsHelper.getCallTypeOrLocation(details);
 
         // Get the time/date of the call
         final CharSequence timeOfCall = mPhoneCallDetailsHelper.getCallDate(details);
