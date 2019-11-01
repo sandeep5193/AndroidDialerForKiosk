@@ -1068,5 +1068,6 @@
     <string name="required_permissions_promo">Contacts need to be "telephone", "address book", "storage space" and "location" access.</string>
     <string name="app_name">Dialer</string>
     <string name="menu_unpin">Unpin</string>
+    <string name="menu_alarm">Alarm</string>
     <string name="dialog_unpin_message">Enter the password to unpin</string>
 </resources>

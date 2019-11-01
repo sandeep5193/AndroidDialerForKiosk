@@ -37,6 +37,7 @@ import android.os.BatteryManager;
 import android.os.Bundle;
 import android.os.Trace;
 import android.os.UserManager;
+import android.provider.AlarmClock;
 import android.provider.CallLog.Calls;
 import android.provider.Settings;
 import android.speech.RecognizerIntent;
@@ -277,7 +278,7 @@ public class DialtactsActivity extends TransactionSafeActivity implements View.O
                     mListsFragment.getSpeedDialFragment() != null &&
                     mListsFragment.getSpeedDialFragment().hasFrequents() && hasContactsPermission);
 
-            menu.findItem(R.id.menu_import_export).setVisible(hasContactsPermission);
+            //menu.findItem(R.id.menu_import_export).setVisible(hasContactsPermission);
             menu.findItem(R.id.menu_add_contact).setVisible(hasContactsPermission);
 
             menu.findItem(R.id.menu_history).setVisible(
@@ -710,9 +711,7 @@ public class DialtactsActivity extends TransactionSafeActivity implements View.O
                     this,
                     IntentUtil.getNewContactIntent(),
                     R.string.add_contact_not_available);
-        } else if (resId == R.id.menu_import_export) {
-            if(true)
-                return true;
+        } /*else if (resId == R.id.menu_import_export) {
             // We hard-code the "contactsAreAvailable" argument because doing it properly would
             // involve querying a {@link ProviderStatusLoader}, which we don't want to do right
             // now in Dialtacts for (potential) performance reasons. Compare with how it is
@@ -726,22 +725,24 @@ public class DialtactsActivity extends TransactionSafeActivity implements View.O
             }
             Logger.logScreenView(ScreenEvent.IMPORT_EXPORT_CONTACTS, this);
             return true;
-        } else if (resId == R.id.menu_clear_frequents) {
+        }*/ else if (resId == R.id.menu_clear_frequents) {
             ClearFrequentsDialog.show(getFragmentManager());
             Logger.logScreenView(ScreenEvent.CLEAR_FREQUENTS, this);
             return true;
-        } else if (resId == R.id.menu_call_settings) {
-            if(true)
-                return true;
+        } /*else if (resId == R.id.menu_call_settings) {
             handleMenuSettings();
             Logger.logScreenView(ScreenEvent.SETTINGS, this);
             return true;
-        } else if (resId == R.id.menu_archive) {
+        }*/ else if (resId == R.id.menu_archive) {
             final Intent intent = new Intent(this, VoicemailArchiveActivity.class);
             startActivity(intent);
             return true;
         } else if (resId == R.id.menu_unpin_password) {
             handleMenuUnpin();
+            return true;
+        } else if (resId == R.id.menu_call_alarm) {
+            Intent openClockIntent = new Intent(AlarmClock.ACTION_SHOW_ALARMS);
+            startActivity(openClockIntent);
             return true;
         }
         return false;
@@ -1486,7 +1487,7 @@ public class DialtactsActivity extends TransactionSafeActivity implements View.O
         // set this Activity as a lock task package
 
         mDevicePolicyManager.setLockTaskPackages(mAdminComponentName,
-                active ? new String[]{getPackageName(), "com.android.dialer"} : new String[]{});
+                active ? new String[]{getPackageName(), "com.android.dialer", "com.google.android.deskclock"} : new String[]{});
 
         IntentFilter intentFilter = new IntentFilter(Intent.ACTION_MAIN);
         intentFilter.addCategory(Intent.CATEGORY_HOME);
@@ -1545,14 +1546,12 @@ public class DialtactsActivity extends TransactionSafeActivity implements View.O
         }
     }
     protected void handleMenuUnpin() {
-        // get prompts.xml view
         LayoutInflater li = LayoutInflater.from(this);
         View promptsView = li.inflate(R.layout.unpin_password, null);
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 this);
 
-        // set prompts.xml to alertdialog builder
         alertDialogBuilder.setView(promptsView);
 
         final EditText userInput = (EditText) promptsView
