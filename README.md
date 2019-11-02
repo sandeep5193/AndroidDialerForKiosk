@@ -1,7 +1,9 @@
 ## Android Dialer
 Android Dialer for Android N (derived from https://github.com/geniusgithub/AndroidDialer)
 
-Customised to use as a kiosk, only phone calls are allowed once set.
+Go through https://codelabs.developers.google.com/codelabs/cosu/index.html
+
+Customised Android Dilaer to use as single-use, only phone calls are allowed once set.
 
 Useful for people who wants to use smartphone as a feature phone. example, my parents :)
 
